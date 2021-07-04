@@ -109,7 +109,12 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  {
+	  char temp[] = 	"LAB 8 MENU\r\n"
+						"[0] : LED Control\r\n"
+						"[1] : Button Status\r\n\n";
+	  HAL_UART_Transmit(&huart2, (uint8_t*) temp, strlen(temp), 1000);
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -135,6 +140,7 @@ int main(void)
 				break;
 			}
 			case state_wait_input:
+
 				switch (inputchar)
 				{
 					case -1:
